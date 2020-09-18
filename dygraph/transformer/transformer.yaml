@@ -4,13 +4,13 @@ enable_ce: False
 # The frequency to save trained models when training.
 save_step: 10000
 # The frequency to fetch and print output when training.
-print_step: 100
+print_step: 10
 # path of the checkpoint, to resume the previous training
 init_from_checkpoint: ""
 # path of the pretrain model, to better solve the current task
-init_from_pretrain_model: ""
+init_from_pretrain_model: "/paddle/compare/models/dygraph/transformer/base_model_dygraph/saved/" # "base_model_dygraph/step_100000/"
 # path of trained parameter, to make prediction
-init_from_params: "trained_params/step_100000/"
+init_from_params: "/paddle/compare/models/dygraph/transformer/base_model_dygraph/saved/" # "base_model_dygraph/step_100000/"
 # the directory for saving model
 save_model: "trained_models"
 # the directory for saving inference model.
@@ -18,17 +18,17 @@ inference_model_dir: "infer_model"
 # Set seed for CE or debug
 random_seed: None
 # The pattern to match training data files.
-training_file: "wmt16_ende_data_bpe/train.tok.clean.bpe.32000.en-de"
+training_file: "wmt16_ende_data_bpe_clean/train.tok.clean.bpe.32000.en-de"
 # The pattern to match validation data files.
-validation_file: "wmt16_ende_data_bpe/newstest2014.tok.bpe.32000.en-de"
+validation_file: "wmt16_ende_data_bpe_clean/newstest2014.tok.bpe.32000.en-de"
 # The pattern to match test data files.
-predict_file: "wmt16_ende_data_bpe/newstest2016.tok.bpe.32000.en-de"
+predict_file: "wmt16_ende_data_bpe_clean/newstest2014.tok.bpe.32000.en-de"
 # The file to output the translation results of predict_file to.
 output_file: "predict.txt"
 # The path of vocabulary file of source language.
-src_vocab_fpath: "wmt16_ende_data_bpe/vocab_all.bpe.32000"
+src_vocab_fpath: "wmt16_ende_data_bpe_clean/vocab_all.bpe.32000"
 # The path of vocabulary file of target language.
-trg_vocab_fpath: "wmt16_ende_data_bpe/vocab_all.bpe.32000"
+trg_vocab_fpath: "wmt16_ende_data_bpe_clean/vocab_all.bpe.32000"
 # The <bos>, <eos> and <unk> tokens in the dictionary.
 special_token: ["<s>", "<e>", "<unk>"]
 
