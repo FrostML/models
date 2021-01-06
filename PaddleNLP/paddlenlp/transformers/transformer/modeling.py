@@ -285,6 +285,11 @@ class TransformerModel(nn.Layer):
         trg_pos = paddle.cast(
             trg_word != self.bos_id, dtype="int64") * paddle.arange(
                 start=0, end=trg_max_len)
+        src_slf_attn_bias.stop_gradient = True
+        trg_slf_attn_bias.stop_gradient = True
+        trg_src_attn_bias.stop_gradient = True
+        src_pos.stop_gradient = True
+        trg_pos.stop_gradient = True
 
         src_emb = self.src_word_embedding(src_word)
         src_pos_emb = self.src_pos_embedding(src_pos)
@@ -351,6 +356,9 @@ class InferTransformerModel(TransformerModel):
         src_pos = paddle.cast(
             src_word != self.bos_id, dtype="int64") * paddle.arange(
                 start=0, end=src_max_len)
+        src_slf_attn_bias.stop_gradient = True
+        trg_src_attn_bias.stop_gradient = True
+        src_pos.stop_gradient = True
 
         # Run encoder
         src_emb = self.src_word_embedding(src_word)
